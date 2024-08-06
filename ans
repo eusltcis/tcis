@@ -1,4 +1,5 @@
 
+
 public class DoublyLinkList
 {
 	Node head;
@@ -124,6 +125,111 @@ public class DoublyLinkList
 
 
 
+//single slink 
+
+public class singleLinklist {
+    Node head;
+
+    class Node {
+        int data;
+        Node next;
+
+        Node(int d) {
+            data = d;
+            next = null;
+        }
+    }
+
+    public void insertF(int value) {
+        Node newNode = new Node(value);
+        newNode.next = head;
+        head = newNode;
+    }
+
+    public void insertL(int value) {
+        Node newNode = new Node(value);
+        if (head == null) {
+            head = newNode;
+            return;
+        }
+        Node current = head;
+        while (current.next != null) {
+            current = current.next;
+        }
+        current.next = newNode;
+    }
+
+    public void insertAfter(Node prevNode, int value) {
+        if (prevNode == null) {
+            System.out.println("The given previous node cannot be null");
+            return;
+        }
+        Node newNode = new Node(value);
+        newNode.next = prevNode.next;
+        prevNode.next = newNode;
+    }
+
+    public void deleteL() {
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+        if (head.next == null) {
+            head = null;
+            return;
+        }
+        Node current = head;
+        while (current.next.next != null) {
+            current = current.next;
+        }
+        current.next = null;
+    }
+
+    public void deleteF() {
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+        head = head.next;
+    }
+
+    public void display() {
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.data + " -> ");
+            current = current.next;
+        }
+        System.out.println("null");
+    }
+
+    public void length() {
+        Node current = head;
+        int count = 0;
+        while (current != null) {
+            count++;
+            current = current.next;
+        }
+        System.out.println("Length is: " + count);
+    }
+
+    public static void main(String args[]) {
+        singleLinklist sll = new singleLinklist();
+        sll.insertF(40);
+        sll.insertF(10);
+        sll.insertF(9);
+        sll.insertF(8);
+        sll.insertL(11);
+        sll.insertL(110);
+        sll.insertAfter(sll.head.next, 100);
+        sll.deleteF();
+        sll.deleteL();
+        sll.display();
+        sll.length();
+    }
+}
+
+
+
 
 
 //stack 
@@ -232,6 +338,52 @@ public class Stack{
 
 
 
+//array
 
 
 
+import java.util.*;
+
+class AddTwoMatrix {
+    public static void main(String args[]) {
+        int m, n, i, j;
+        Scanner in = new Scanner(System.in);
+        
+        System.out.println("Enter the number of rows and columns of matrix:");
+        m = in.nextInt();
+        n = in.nextInt();
+        
+        int first[][] = new int[m][n];
+        int second[][] = new int[m][n];
+        int sum[][] = new int[m][n];
+        
+        System.out.println("Enter the elements of first matrix:");
+        for (i = 0; i < m; i++) {
+            for (j = 0; j < n; j++) {
+                first[i][j] = in.nextInt();
+            }
+        }
+        
+        System.out.println("Enter the elements of second matrix:");
+        for (i = 0; i < m; i++) {
+            for (j = 0; j < n; j++) {
+                second[i][j] = in.nextInt();
+            }
+        }
+        
+        for (i = 0; i < m; i++) {
+            for (j = 0; j < n; j++) {
+                sum[i][j] = first[i][j] + second[i][j]; 
+            }
+        }
+        
+        System.out.println("Sum of the matrices:");
+        for (i = 0; i < m; i++) {
+            for (j = 0; j < n; j++) {
+                System.out.print(sum[i][j] + "\t");
+            }
+            System.out.println();
+        }
+        
+    }
+}
