@@ -1,0 +1,237 @@
+
+public class DoublyLinkList
+{
+	Node head;
+	
+	class Node{
+		
+		int data;
+		Node next;
+		Node prev;
+		
+		Node(int d)
+		{
+			data=d;
+			next=null;
+			prev=null;
+		}
+	}
+
+	
+	public void insertF(int value)
+	{
+		Node newNode=new Node(value);
+		
+		newNode.next=head;
+		newNode.prev=null;
+		
+		head=newNode;
+	}
+	
+	public void insertL(int value)
+	{
+		Node newNode=new Node(value);
+		Node current =head;
+		
+		while(current.next!=null)
+		{
+			current=current.next;
+		}
+		current.next=newNode;
+	}
+	
+	public void display()
+	{
+		Node current=head;
+		
+		while(current!=null)
+		{
+			System.out.print(current.data+"->");
+			current=current.next;
+		}
+	}
+	
+	
+	public void InsertAfter(Node prev_Node, int value)
+ {
+ 
+
+ 
+
+ Node new_node = new Node(value);
+ 
+ new_node.next = prev_Node.next;
+ 
+ prev_Node.next = new_node;
+ new_node.prev = prev_Node;
+ 
+ 
+ if (new_node.next != null)
+ new_node.next.prev = new_node;
+
+
+ }
+ 
+ public void deleteL()
+ {
+	 Node current=head;
+	 head=head.next;
+	 head.prev=null;
+ }
+ 
+ public void deletF()
+ {
+	 Node current=head;
+	 head=head.prev;
+	 head.next=null;
+ }
+	
+	public void Length()
+	{
+			Node current=head;
+		int count=0;
+	
+		
+		while(current!=null)
+		{
+			current=current.next;
+			count=count+1;
+		}
+		System.out.println();
+		System.out.println("Length is :"+count);
+	}
+	
+	public static void main(String args[])
+	{
+		DoublyLinkList dll=new DoublyLinkList();
+		dll.insertF(40);
+		dll.insertF(10);
+		dll.insertF(9);
+		dll.insertF(8);
+		dll.insertL(11);
+		dll.insertL(110);
+		dll.InsertAfter(dll.head.next,100);
+		dll.deleteL();
+		dll.deleteL();
+	
+		dll.display();
+		
+		dll.Length();
+	}
+}
+
+
+
+
+
+
+
+//stack 
+
+
+
+public class Stack{
+	
+	int arr[];
+	int top;
+	int capacity;
+	int temp;
+	
+	Stack(int size){
+		arr=new int[size];
+		capacity=size;
+		top=-1;
+	}
+	
+	Boolean isFull()
+	{
+		return top+1 ==capacity;
+	}
+	
+	Boolean isEmpty(){
+		return top==-1;
+	}
+	
+	void push(int x)
+	{
+		if(isFull()){
+			System.out.println("Over Flow!");
+		}
+		else
+		{
+			top++;
+			arr[top]=x;
+			System.out.println("inserting:"+x);
+		}
+	}
+	
+	void pop(){
+		if(isEmpty()){
+			System.out.println("Stack empty");
+		}
+		else
+			System.out.println("Removing"+arr[top]);
+			top--;
+	}
+	
+	void printStack()
+	{
+		System.out.println("Printing Stack");
+		for(int i=0;i<=top;i++)
+		{
+			System.out.println(arr[i]);
+		}
+	}
+	
+	void size()
+	{
+		System.out.println(top+1);
+	}
+	
+	void Sort()
+	{
+		for(int i=0;i<top;i++)
+		{
+			for(int j=i+1;j<top;j++){
+				
+				if(arr[i]>arr[j])
+				{
+					temp=arr[i];
+					arr[i]=arr[j];
+					arr[j]=temp;
+					
+				}
+				
+		}}
+		
+		for(int i=0;i<top+1;i++){
+			System.out.println(arr[i]);
+	}
+		}
+	
+	public static void main(String args[])
+	{
+		Stack myStack =new Stack(5);
+		
+		myStack.push(90);
+		myStack.push(20);
+		myStack.push(0);
+		myStack.push(80);
+		myStack.push(700);
+		myStack.push(60);
+		myStack.pop();
+		
+		myStack.printStack();
+		myStack.size();
+		myStack.Sort();
+		
+		
+	}
+	
+}
+
+
+
+
+
+
